@@ -2,7 +2,7 @@
 
 public class Artista 
 {
-    public ICollection<Musica> Musicas { get; set; } = new List<Musica>();
+    public virtual ICollection<Musica> Musicas { get; set; } = new List<Musica>();
 
     public Artista(string nome, string bio)
     {

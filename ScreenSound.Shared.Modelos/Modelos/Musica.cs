@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using ScreenSound.Banco;
+﻿
 
 namespace ScreenSound.Modelos;
 
