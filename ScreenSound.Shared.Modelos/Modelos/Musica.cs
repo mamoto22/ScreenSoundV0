@@ -7,6 +7,7 @@ public class Musica
     public Musica(string nome)
     {
         Nome = nome;
+        
     }
 
     public virtual Artista? Artista { get; set; }

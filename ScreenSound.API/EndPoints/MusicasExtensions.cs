@@ -8,6 +8,11 @@ namespace ScreenSound.API.EndPoints
     {
         public static void AddEndPointsMusicas(this WebApplication app) 
         {
+            app.MapGet("/Musicas", ([FromServices] DAL<Musica> dal) =>
+            {
+                return Results.Ok(dal.Listar());
+            });
+
             app.MapGet("/Musicas/{nome}", ([FromServices] DAL<Musica> dal, string nome) =>
             {
                 var musica = dal.RecuperarPor(a => a.Nome.ToUpper().Equals(nome.ToUpper()));
@@ -20,7 +25,7 @@ namespace ScreenSound.API.EndPoints
                 return Results.Ok(musica);
             });
 
-            app.MapPost("/Musicas", ([FromServices] DAL<Musica> dal, [FromBody] Musica musica) =>
+            app.MapPost("/Musicas", ([FromServices]DAL<Musica> dal, [FromBody]Musica musica) =>
             {
                 dal.Adicionar(musica);
                 return Results.Ok();
