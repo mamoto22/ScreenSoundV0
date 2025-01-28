@@ -20,7 +20,7 @@ namespace ScreenSound.Migrations
                 .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ScreenSound.Modelos.Artista", b =>
                 {
@@ -28,7 +28,7 @@ namespace ScreenSound.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Bio")
                         .IsRequired()
@@ -44,7 +44,7 @@ namespace ScreenSound.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Artistas");
+                    b.ToTable("Artistas", (string)null);
                 });
 
             modelBuilder.Entity("ScreenSound.Modelos.Musica", b =>
@@ -53,7 +53,7 @@ namespace ScreenSound.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("AnoLancamento")
                         .HasColumnType("int");
@@ -69,14 +69,16 @@ namespace ScreenSound.Migrations
 
                     b.HasIndex("ArtistaId");
 
-                    b.ToTable("Musicas");
+                    b.ToTable("Musicas", (string)null);
                 });
 
             modelBuilder.Entity("ScreenSound.Modelos.Musica", b =>
                 {
-                    b.HasOne("ScreenSound.Modelos.Artista", null)
+                    b.HasOne("ScreenSound.Modelos.Artista",
+                "Artista")
                         .WithMany("Musicas")
                         .HasForeignKey("ArtistaId");
+                    b.Navigation("Artista");
                 });
 
             modelBuilder.Entity("ScreenSound.Modelos.Artista", b =>

@@ -13,6 +13,7 @@ namespace ScreenSound.Migrations
                 table: "Musicas",
                 type: "int",
                 nullable: true);
+            
 
             migrationBuilder.CreateIndex(
                 name: "IX_Musicas_ArtistaId",
@@ -26,6 +27,7 @@ namespace ScreenSound.Migrations
                 principalTable: "Artistas",
                 principalColumn: "Id");
         }
+
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {

@@ -8,6 +8,7 @@ namespace ScreenSound.API.EndPoints
     {
         public static void AddEndPointsMusicas(this WebApplication app) 
         {
+            #region EndPoint Musicas
             app.MapGet("/Musicas", ([FromServices] DAL<Musica> dal) =>
             {
                 return Results.Ok(dal.Listar());
@@ -55,6 +56,7 @@ namespace ScreenSound.API.EndPoints
                 return Results.NoContent();
 
             });
+            #endregion
         }
     }
 }

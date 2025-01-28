@@ -1,9 +1,4 @@
-﻿using ScreenSound.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace ScreenSound.Banco
 {
@@ -16,7 +11,7 @@ namespace ScreenSound.Banco
             this.context = context;
         }
 
-        public virtual IEnumerable<T> Listar()
+        public  IEnumerable<T> Listar()
         {
             return context.Set<T>().ToList();
         }
